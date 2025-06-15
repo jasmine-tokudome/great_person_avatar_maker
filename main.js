@@ -28,7 +28,7 @@ function init() {
 
 // 画像をクリックしたときの処理
 function clickFace() {
-
+    file.click();
 }
 
 // 画像を読み込む
