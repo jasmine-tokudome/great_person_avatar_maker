@@ -33,7 +33,15 @@ function clickFace() {
 
 // 画像を読み込む
 function loadLocalImage(e) {
-
+    const fileData = e.target.files[0];
+    if (fileData.type.match("image.*")){
+        const reader = new FileReader();
+        reader.onload = function(){
+            faceDraw(reader.result);
+            file.value ="";
+        }
+        reader.readAsDataURL(fileData);
+    }
 }
 
 // 画像を書き出す
