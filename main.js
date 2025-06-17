@@ -71,7 +71,7 @@ function faceDraw(data) {
 
 // グレースケールに変換
 function grayscale(ctx) {
-
+    grayscale(ctx);
 }
 
 // カメラボタンクリック時の処理
