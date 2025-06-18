@@ -65,13 +65,13 @@ function faceDraw(data) {
         }
         ctx.drawImage(img, x, y, width, height);
         // グレースケールに変換
-
+        grayscale(ctx);
     }
 }
 
 // グレースケールに変換
 function grayscale(ctx) {
-    grayscale(ctx);
+    
 }
 
 // カメラボタンクリック時の処理
