@@ -113,7 +113,10 @@ function loadVideo() {
 
 // カメラで撮影した画像を表示する
 function takePhoto() {
-
+    const csx = face.getConstex("2D") ;
+    ctx.drawImage(video, 0, 0, face.width.widh,face.height )
+    agray(ctx);
+    video.pause();
 }
 
 // ペイントボタンクリック時の処理
