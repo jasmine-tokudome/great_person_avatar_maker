@@ -124,8 +124,8 @@ function clickPaint() {
     ranugaki_mode = !ranugaki_mode;
     paint.classList.toggle("on");
     // お絵かき領域を切り替える
-
-
+    rakugaki.classList.toggle("hide");
+    resize();
     // パレット切り替え
 
 }
