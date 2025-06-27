@@ -138,7 +138,15 @@ function resize() {
 
 // ペンの書き始め
 function drawStart(e) {
-
+    if (rakugaki_mode){
+        const bounds = rakugaki.getBoundingClientRect();
+        const ctx = rakugaki.getContext("2d");
+        ctx.fillStyle = pen_color;
+        ctx.fillRect((e.clientX - boundsleft),(e.clientY - bounds.top), 1, 1)
+        mouse_on = true;
+        prev_point.x = (e.clientX - bounds.left);
+        prev_point.y = (e.clientY - bounds.top);
+    }
 }
 
 // ペンの書き途中
