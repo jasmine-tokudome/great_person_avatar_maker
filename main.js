@@ -151,7 +151,18 @@ function drawStart(e) {
 
 // ペンの書き途中
 function drawLine(e) {
-
+    if (rakugaki_mode && mouse_on){
+        const bounds = rakugaki.getBoundingClientRect();
+        const ctx = rakugeki_getContext("2d");
+        ctx.strokeStyle = pen_color;
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(prev_point.x,prev_point.y);
+        ctx.lineTo((e.clintX - bounds.left), (e.clientY - bounds.top));
+        ctx.stroke();
+        prev_point.x = (e.clientX - bounds.left);
+        prev_point.y = (e.clientY - bounds.top);
+    }
 }
 
 // ペンの書き終わり
