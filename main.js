@@ -167,7 +167,7 @@ function drawLine(e) {
 
 // ペンの書き終わり
 function drawEnd() {
-
+    mouse_on = false;
 }
 
 // ペンの色変更
