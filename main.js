@@ -127,7 +127,7 @@ function clickPaint() {
     rakugaki.classList.toggle("hide");
     resize();
     // パレット切り替え
-
+    color?.classlist.toggle("hide");
 }
 
 // 画面サイズ変更時の処理
