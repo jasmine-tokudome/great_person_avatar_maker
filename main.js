@@ -172,7 +172,7 @@ function drawEnd() {
 
 // ペンの色変更
 function colorChange(e) {
-
+    pen_color = e.target.value;
 }
 
 // 初期化
