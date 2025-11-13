@@ -1,0 +1,20 @@
+{
+  "name": "great_person_avatar_maker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jasmine-tokudome/great_person_avatar_maker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jasmine-tokudome/great_person_avatar_maker/issues"
+  },
+  "homepage": "https://github.com/jasmine-tokudome/great_person_avatar_maker#readme"
+}
