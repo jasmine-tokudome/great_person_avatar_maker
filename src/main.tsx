@@ -204,10 +204,10 @@ const App: React.FC = () => {
       <input id="file" type="file" ref={fileRef} />
       <button id="paint" ref={paintRef}>Paint</button>
       <button id="camera" ref={cameraRef}>Camera</button>
-      <input id="color" type="color" ref={colorRef} />
+      {/* <input id="color" type="color" ref={colorRef} />
       anvas id="face" ref={faceRef} />
       <video id="video" ref={videoRef} className="hide" />
-      anvas id="rakugaki" ref={rakugakiRef} />
+      anvas id="rakugaki" ref={rakugakiRef} /> */}
     </div>
   );
 };
