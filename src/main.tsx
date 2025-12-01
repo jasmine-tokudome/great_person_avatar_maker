@@ -18,7 +18,7 @@ const App: React.FC = () => {
 
   // 画像をクリックしたときの処理
   const clickFace = () => {
-    // TODO: 実装
+    file.click();
   };
 
   // 画像を読み込む
