@@ -1,15 +1,15 @@
 import React from 'react';
 
 type Props = {
-  canvasRef: React.RefObject<HTMLCanvasElement>; // お絵かき用
-  imageCanvasRef: React.RefObject<HTMLCanvasElement>; // 画像表示用
-  videoRef: React.RefObject<HTMLVideoElement>; // カメラ用
-  isVideoMode: boolean;
-  // お絵かきイベント用
-  onDrawStart: (e: React.MouseEvent) => void;
-  onDrawLine: (e: React.MouseEvent) => void;
-  onDrawEnd: () => void;
-};
+    canvasRef: React.RefObject<HTMLCanvasElement | null>; 
+    imageCanvasRef: React.RefObject<HTMLCanvasElement | null>;
+    videoRef: React.RefObject<HTMLVideoElement | null>;
+    
+    isVideoMode: boolean;
+    onDrawStart: (e: React.MouseEvent) => void;
+    onDrawLine: (e: React.MouseEvent) => void;
+    onDrawEnd: () => void;
+  };
 
 export const CanvasArea: React.FC<Props> = ({
   canvasRef,
