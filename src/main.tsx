@@ -18,8 +18,9 @@ const App: React.FC = () => {
 
   // 画像をクリックしたときの処理
   const clickFace = () => {
-    file.click();
-  };
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
 
   // 画像を読み込む
   const loadLocalImage = (e: Event) => {

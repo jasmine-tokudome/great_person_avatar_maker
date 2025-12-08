@@ -24,7 +24,7 @@ export const ControlBar: React.FC<Props> = ({
   return (
     <div className="control-bar">
       {/* ファイル選択 */}
-      <button onClick={() => fileInputRef.current?.click()}>ファイル</button>
+      <button onClick={clickFace}>ファイル</button>
       <input
         type="file"
         id="file"
