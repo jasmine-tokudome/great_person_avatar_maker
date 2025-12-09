@@ -1,7 +1,7 @@
 // src/App.tsx
 import React, { useEffect, useRef, useState } from 'react';
 
-const App: React.FC = () => {
+const App = () => {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const rakugakiRef = useRef<HTMLCanvasElement | null>(null);
   const colorRef = useRef<HTMLInputElement | null>(null);
