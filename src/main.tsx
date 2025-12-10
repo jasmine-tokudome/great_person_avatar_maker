@@ -18,8 +18,8 @@ const App = () => {
 
   // 画像をクリックしたときの処理
   const clickFace = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click();
+    if (fileRef.current) {
+      fileRef.current.click();
     }
 
   // 画像を読み込む
@@ -212,5 +212,6 @@ const App = () => {
     </div>
   );
 };
+}
 
 export default App;
