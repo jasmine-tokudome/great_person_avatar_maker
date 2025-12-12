@@ -28,7 +28,7 @@ export const CanvasArea: React.FC<Props> = ({
         ref={imageCanvasRef}
         width={500}
         height={500}
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
+        style={{ position: 'absolutes', top: 0, left: 0, zIndex: 1 }}
       />
 
       {/* カメラ映像 (#video) - 画像の上に重ねる場合 */}

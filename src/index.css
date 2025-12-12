@@ -118,7 +118,7 @@ body {
   border: 1px solid #000000;
   background-size: cover;
   /* 肖像画 */
-  background-image: url("/src/assets/face.png");
+  background-image: url("src/assets/face.png");
 }
 
 #video {
