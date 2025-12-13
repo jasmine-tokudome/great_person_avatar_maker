@@ -1,6 +1,8 @@
 // src/App.tsx
 import React, { useEffect, useRef, useState } from 'react';
 
+import './index.css';
+
 const App = () => {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const rakugakiRef = useRef<HTMLCanvasElement | null>(null);
