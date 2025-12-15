@@ -1,6 +1,5 @@
 // src/App.tsx
 import React, { useEffect, useRef, useState } from 'react';
-
 import './index.css';
 
 const App = () => {
