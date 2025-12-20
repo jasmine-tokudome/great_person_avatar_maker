@@ -25,7 +25,15 @@ const App = () => {
 
   // 画像を読み込む
   const loadLocalImage = (e: Event) => {
-    // TODO: 実装
+    const fileDate = e.target.files[0];
+    if (fileDate.type.match("image.*")){
+      const reader = new FileReader();
+      reader.onload = function(){
+        faceDraw(reader.result);
+        fileDate.value = "";
+      }
+      reader.readAsDataURL(fileDate);
+    }
   };
 
   // 画像を書き出す
