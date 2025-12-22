@@ -66,6 +66,7 @@ const App = () => {
       }
       ctx.drawImage(img, x, y, width, height);
       // グレースケールに変換（必要なら grayscale(ctx) を呼ぶ）
+      grayscale(ctx)
     };
   };
 
