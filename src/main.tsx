@@ -72,12 +72,19 @@ const App = () => {
 
   // グレースケールに変換
   const grayscale = (ctx: CanvasRenderingContext2D) => {
-    const width = ctx.camvas.width;
-    const height = ctx.camvas.height;
-    const imageData = cts.getImageData(0, 0, width, height);
-    fir (let i = 0; i < width * height * 4; i += 4){
-      const r=imageData.data[i]
+    const width = ctx.canvas.width;
+    const height = ctx.canvas.height;
+    const imageData = ctx.getImageData(0, 0, width, height);
+    for (let i = 0; i < width * height * 4; i += 4){
+      const r = imageData.data[i]
+      const g = imageData.data[i + 1];
+      const b = imageData.data[i + 2];
+      const brightness = (r + g + b) / 3;
+      imageData.data[i] = brightness;
+      imageData.data[i + 1] = brightness;
+      imageData.data[i + 2] = brightness;
     }
+    ctx.putImageData(imageData, 0, 0)
   };
 
   // カメラボタンクリック時の処理
