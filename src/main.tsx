@@ -108,8 +108,16 @@ const App = () => {
 
   // カメラを起動する
   const loadVideo = () => {
-    // TODO: 実装（getUserMedia など）
-  };
+    navigator.mediaDevices.getUserMedia({
+      audio: false,
+      video: {
+        width: { ideal: 300 },
+        height: { ideal: 300 }
+      }
+    }).then(function(stream){
+      video.srcObject = stream;
+    });
+  }
 
   // カメラで撮影した画像を表示する
   const takePhoto = () => {
