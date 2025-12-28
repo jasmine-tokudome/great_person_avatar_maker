@@ -121,7 +121,10 @@ const App = () => {
 
   // カメラで撮影した画像を表示する
   const takePhoto = () => {
-    // TODO: 実装（video から canvas に描画して faceDraw を呼ぶなど）
+    const ctx = face.getContext("2d");
+    ctx.drawImage(video, 0, 0, face.width, face.height);
+    grayscale(ctx);
+    video.pause();
   };
 
   // ペイントボタンクリック時の処理
