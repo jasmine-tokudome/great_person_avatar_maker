@@ -138,6 +138,9 @@ const App = () => {
 
     paint.classList.toggle('on');
     // お絵かき領域／パレット切り替えの DOM 操作をここに
+    rakugaki.classList.toggle("hide");
+    resize();
+    // パレット切り替え
   };
 
   // 画面サイズ変更時の処理
