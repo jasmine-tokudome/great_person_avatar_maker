@@ -165,28 +165,42 @@ const App = () => {
   };
 
   // ペンの書き途中
-  const drawLine = (e: MouseEvent) => {
-    if (!mouseOnRef.current) return;
-    const rakugaki = rakugakiRef.current;
-    if (!rakugaki) return;
+  function drawLine(e){
+    if (rakugaki_mode && mouse_on){
+      const bounds = rakigaki.getBoundingClientRect();
+      const ctx = rakugaki.getContext("2d");
+      ctx.strokeStyle = pencolor;
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(prev_point.x, prev_point.y);
+      ctx.lneTo((e.clientX - bounds.left), (e.clientY - bounds.top));
+      ctx.stroke();
+      prev_point.x = (e.clientX - bounds.left);
+      prev_point.y = (e.clientY - bounds.top)
+    }
+  }
+  // const drawLine = (e: MouseEvent) => {
+  //   if (!mouseOnRef.current) return;
+  //   const rakugaki = rakugakiRef.current;
+  //   if (!rakugaki) return;
 
-    const ctx = rakugaki.getContext('2d');
-    if (!ctx) return;
+  //   const ctx = rakugaki.getContext('2d');
+  //   if (!ctx) return;
 
-    const rect = rakugaki.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+  //   const rect = rakugaki.getBoundingClientRect();
+  //   const x = e.clientX - rect.left;
+  //   const y = e.clientY - rect.top;
 
-    ctx.strokeStyle = penColor;
-    ctx.lineWidth = 3;
-    ctx.lineCap = 'round';
-    ctx.beginPath();
-    ctx.moveTo(prevPointRef.current.x, prevPointRef.current.y);
-    ctx.lineTo(x, y);
-    ctx.stroke();
+  //   ctx.strokeStyle = penColor;
+  //   ctx.lineWidth = 3;
+  //   ctx.lineCap = 'round';
+  //   ctx.beginPath();
+  //   ctx.moveTo(prevPointRef.current.x, prevPointRef.current.y);
+  //   ctx.lineTo(x, y);
+  //   ctx.stroke();
 
-    prevPointRef.current = { x, y };
-  };
+  //   prevPointRef.current = { x, y };
+  // };
 
   // ペンの書き終わり
   const drawEnd = () => {
