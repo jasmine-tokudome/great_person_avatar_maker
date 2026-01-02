@@ -203,9 +203,12 @@ const App = () => {
   // };
 
   // ペンの書き終わり
-  const drawEnd = () => {
-    mouseOnRef.current = false;
-  };
+  function drawEnd(){
+    mouse_on = false;
+  }
+  // const drawEnd = () => {
+  //   mouseOnRef.current = false;
+  // };
 
   // ペンの色変更
   const colorChange = (e: Event) => {
