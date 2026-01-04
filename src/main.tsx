@@ -141,6 +141,7 @@ const App = () => {
     rakugaki.classList.toggle("hide");
     resize();
     // パレット切り替え
+    color?.classList.toggle("hide");
   };
 
   // 画面サイズ変更時の処理
