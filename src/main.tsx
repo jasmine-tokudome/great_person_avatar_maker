@@ -212,11 +212,14 @@ const App = () => {
   // };
 
   // ペンの色変更
-  const colorChange = (e: Event) => {
-    const target = e.target as HTMLInputElement | null;
-    if (!target) return;
-    setPenColor(target.value);
-  };
+  // const colorChange = (e: Event) => {
+  //   const target = e.target as HTMLInputElement | null;
+  //   if (!target) return;
+  //   setPenColor(target.value);
+  // };
+  function colorChange(e){
+    pen_color = e.taeget.value;
+  }
 
   // イベントリスナ登録・クリーンアップ
   useEffect(() => {
