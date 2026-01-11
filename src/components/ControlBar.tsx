@@ -21,6 +21,10 @@ export const ControlBar: React.FC<Props> = ({
 }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const clickFace = () => {
+    fileInputRef.current?.click();
+  };
+
   return (
     <div className="control-bar">
       {/* ファイル選択 */}
@@ -29,7 +33,7 @@ export const ControlBar: React.FC<Props> = ({
         type="file"
         id="file"
         ref={fileInputRef}
-        onChange={onFileSelect}
+        onChange={handleFileSelect}
         style={{ display: 'none' }}
       />
 
