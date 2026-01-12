@@ -33,7 +33,7 @@ export const ControlBar: React.FC<Props> = ({
         type="file"
         id="file"
         ref={fileInputRef}
-        onChange={handleFileSelect}
+        onChange={onFileSelect}
         style={{ display: 'none' }}
       />
 
