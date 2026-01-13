@@ -23,7 +23,7 @@ export const CanvasArea: React.FC<Props> = ({
   return (
     <div className="canvas-wrapper" style={{ position: 'relative', width: '500px', height: '500px', border: '1px solid #ccc' }}>
       
-      {/* 背景画像用キャンバス (#face) */}
+      背景画像用キャンバス (#face)
       <canvas
         ref={imageCanvasRef}
         width={500}
