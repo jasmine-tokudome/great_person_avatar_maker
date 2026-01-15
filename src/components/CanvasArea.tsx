@@ -1,16 +1,3 @@
-import React from 'react';
-
-type Props = {
-    canvasRef: React.RefObject<HTMLCanvasElement | null>; 
-    imageCanvasRef: React.RefObject<HTMLCanvasElement | null>;
-    videoRef: React.RefObject<HTMLVideoElement | null>;
-    
-    isVideoMode: boolean;
-    onDrawStart: (e: React.MouseEvent) => void;
-    onDrawLine: (e: React.MouseEvent) => void;
-    onDrawEnd: () => void;
-  };
-
 export const CanvasArea: React.FC<Props> = ({
   canvasRef,
   imageCanvasRef,
@@ -21,27 +8,39 @@ export const CanvasArea: React.FC<Props> = ({
   onDrawEnd,
 }) => {
   return (
-    <div className="canvas-wrapper" style={{ position: 'relative', width: '500px', height: '500px', border: '1px solid #ccc' }}>
+    // 枠組み。App.cssの #main 等と整合性を取る
+    <div className="canvas-container" style={{ position: 'relative', width: '500px', height: '500px', margin: '0 auto' }}>
       
-      背景画像用キャンバス (#face)
+      {/* 背景画像用キャンバス */}
       <canvas
+        id="face"
         ref={imageCanvasRef}
         width={500}
         height={500}
-        style={{ position: absolute, top: 0, left: 0, zIndex: 1 }}
+        style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
       />
 
-      {/* カメラ映像 (#video) - 画像の上に重ねる場合 */}
+      {/* カメラ映像 */}
       <video
+        id="video"
         ref={videoRef}
         autoPlay
         playsInline
         className={isVideoMode ? '' : 'hide'}
-        style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, display: isVideoMode ? 'block' : 'none', width: '100%', height: '100%' }}
+        style={{ 
+          position: 'absolute', 
+          top: 0, 
+          left: 0, 
+          zIndex: 2, 
+          width: '100%', 
+          height: '100%',
+          objectFit: 'cover' // 映像の歪みを防止
+        }}
       />
 
-      {/* お絵かき用キャンバス (#rakugaki) - 最前面 */}
+      {/* お絵かき用キャンバス（最前面） */}
       <canvas
+        id="rakugaki"
         ref={canvasRef}
         width={500}
         height={500}
