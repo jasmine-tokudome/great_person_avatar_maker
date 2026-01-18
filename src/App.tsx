@@ -15,6 +15,15 @@ function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const lastPosition = useRef({ x: 0, y: 0 });
 
+  useEffect(() => {
+    // rakugaki (canvasRef) に何か描画していないか確認
+    console.log('rakugakiRef:', rakugakiRef.current);
+    console.log('faceRef:', faceRef.current);
+  
+    // 同じ ref を参照していないか
+    console.log('同一か:', rakugakiRef.current === faceRef.current);
+  }, []);  
+
   // 画像の描画とグレースケール適用
   const drawToCanvas = useCallback((img: HTMLImageElement | HTMLVideoElement) => {
     const canvas = faceRef.current;
