@@ -15,6 +15,13 @@ function App() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const lastPosition = useRef({ x: 0, y: 0 });
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // ファイルダイアログを開く関数
+  const handleTriggerFileInput = () => {
+    fileInputRef.current?.click();
+  };
+  
   useEffect(() => {
     // rakugaki (canvasRef) に何か描画していないか確認
     console.log('rakugakiRef:', rakugakiRef.current);
