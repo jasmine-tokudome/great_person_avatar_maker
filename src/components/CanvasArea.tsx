@@ -15,6 +15,7 @@ export const CanvasArea: React.FC<Props> = ({
       <canvas
         id="face"
         ref={imageCanvasRef}
+        onClick={onFaceClick}
         width={500}
         height={500}
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
