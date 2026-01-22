@@ -6,6 +6,7 @@ export const CanvasArea: React.FC<Props> = ({
   onDrawStart,
   onDrawLine,
   onDrawEnd,
+  onFaceClick
 }) => {
   return (
     // 枠組み。App.cssの #main 等と整合性を取る

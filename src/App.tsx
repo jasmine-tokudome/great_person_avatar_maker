@@ -21,7 +21,7 @@ function App() {
   const handleTriggerFileInput = () => {
     fileInputRef.current?.click();
   };
-  
+
   useEffect(() => {
     // rakugaki (canvasRef) に何か描画していないか確認
     console.log('rakugakiRef:', rakugakiRef.current);
@@ -104,18 +104,26 @@ function App() {
     <div className="App">
       <ControlBar 
         penColor={penColor} setPenColor={setPenColor}
-        onFileSelect={handleFileSelect} onCameraClick={toggleCamera}
+        onFileSelect={handleFileSelect}
+        onCameraClick={toggleCamera}
         onPaintClick={() => setIsPaintMode(!isPaintMode)}
-        isPaintMode={isPaintMode} isVideoMode={isVideoMode}
+        isPaintMode={isPaintMode}
+        isVideoMode={isVideoMode}
+        fileInputRef={fileInputRef}
       />
       <CanvasArea
-        canvasRef={rakugakiRef} imageCanvasRef={faceRef} videoRef={videoRef}
-        isVideoMode={isVideoMode} onDrawStart={(e) => {
+        canvasRef={rakugakiRef}
+        imageCanvasRef={faceRef}
+        videoRef={videoRef}
+        isVideoMode={isVideoMode}
+        onFaceClick={handleTriggerFileInput}
+        onDrawStart={(e) => {
           if(!isPaintMode) return;
           setIsDrawing(true);
           lastPosition.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
         }}
-        onDrawLine={handleDrawLine} onDrawEnd={() => setIsDrawing(false)}
+        onDrawLine={handleDrawLine}
+        onDrawEnd={() => setIsDrawing(false)}
       />
     </div>
   );
