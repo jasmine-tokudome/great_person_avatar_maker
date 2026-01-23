@@ -59,40 +59,29 @@ body {
   width: 500px;
   height: 500px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin: 0 auto;
+}
+
+#face, #video, #rakugaki {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
 }
 
 #face {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 500px;
-  border: 1px solid #000000;
-  background-size: cover;
-  background-image: url("/face.png"); /* デフォルト画像 */
   z-index: 1;
+  border: 1px solid #000000;
+  /* background-size: cover; */
 }
 
 #video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 500px;
   z-index: 2;
-  object-fit: cover;
 }
 
 #rakugaki {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 500px;
-  height: 500px;
   z-index: 3;
-  border: 1px dashed transparent;
-  transition: border 0.3s;
-  cursor: crosshair;
 }
 
 #rakugaki:hover {
