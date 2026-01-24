@@ -13,43 +13,20 @@
 }
 
 body {
-  margin: 0;
-  display: flex;
-  flex-flow: column;
-  place-content: center;
-  place-items: center;
   min-height: 100vh;
-  font-family: 'ＭＳ 明朝', serif;
 }
 
 /* --- Layout Components --- */
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
   z-index: 10;
-}
-
-#icons {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-}
-
-#functions,
-#tools {
-  display: flex;
-  flex-direction: row-reverse;
-  width: 100%;
 }
 
 #main {
   /* Canvasの幅500pxに合わせてマージンを調整 */
-  margin: 100px auto 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
 }
 
 /* --- Canvas Area (Stacking Context) --- */
@@ -60,6 +37,9 @@ body {
   height: 500px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin: 0 auto;
+  background-image: url("/face.png");
+  background-size: cover;
+  background-position: center;
 }
 
 #face, #video, #rakugaki {
@@ -71,16 +51,31 @@ body {
 }
 
 #face {
-  z-index: 1;
   border: 1px solid #000000;
+  z-index: 1;
+  background-color: transparent;
 }
 
 #video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
   z-index: 2;
+  object-fit: cover;
 }
 
 #rakugaki {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 500px;
+  height: 500px;
   z-index: 3;
+  border: 1px dashed transparent;
+  transition: border 0.3s;
+  cursor: crosshair;
 }
 
 #rakugaki:hover {
