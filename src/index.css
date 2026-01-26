@@ -31,6 +31,25 @@ body {
 
 /* --- Canvas Area (Stacking Context) --- */
 /* CanvasArea.tsx の一番外側の div に対応 */
+
+/* CanvasAreaを包むラッパー */
+.canvas-wrapper {
+  position: relative; /* 子要素の absolute の基準点になる */
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+}
+
+/* 重ねる要素すべてに適用 */
+.canvas-wrapper canvas,
+.canvas-wrapper video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+}
+
 .canvas-container {
   position: relative;
   width: 500px;
