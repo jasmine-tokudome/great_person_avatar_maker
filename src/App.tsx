@@ -29,7 +29,7 @@ function App() {
   
     // 同じ ref を参照していないか
     console.log('同一か:', rakugakiRef.current === faceRef.current);
-  }, []);  
+  }, []);
 
   // 画像の描画とグレースケール適用
   const drawToCanvas = useCallback((img: HTMLImageElement | HTMLVideoElement) => {
