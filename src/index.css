@@ -31,25 +31,6 @@ body {
 
 /* --- Canvas Area (Stacking Context) --- */
 /* CanvasArea.tsx の一番外側の div に対応 */
-
-/* CanvasAreaを包むラッパー */
-.canvas-wrapper {
-  position: relative; /* 子要素の absolute の基準点になる */
-  width: 300px;
-  height: 300px;
-  margin: 0 auto;
-}
-
-/* 重ねる要素すべてに適用 */
-.canvas-wrapper canvas,
-.canvas-wrapper video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 300px;
-  height: 300px;
-}
-
 .canvas-container {
   position: relative;
   width: 500px;
@@ -57,8 +38,6 @@ body {
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
   margin: 0 auto;
   background-image: url("/face.png");
-  background-size: cover;
-  background-position: center;
 }
 
 #face, #video, #rakugaki {
@@ -71,8 +50,9 @@ body {
 
 #face {
   border: 1px solid #000000;
+  background-size: cover;
   z-index: 1;
-  background-color: transparent;
+  background-color: #eee;
 }
 
 #video {

@@ -22,6 +22,14 @@ export const CanvasArea: React.FC<Props> = ({
         style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
       />
 
+      {/* 4. 生没年・プロフィール用 Canvas (今回追加) */}
+      <canvas
+        ref={infoCanvasRef}
+        width={500}
+        height={300}
+        style={{ marginTop: '10px', border: '1px solid #ccc' }}
+      />
+
       {/* カメラ映像 */}
       <video
         id="video"
