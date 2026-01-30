@@ -23,6 +23,22 @@ export const CanvasArea: React.FC<Props> = ({
 }) => {
   const infoCanvasRef = useRef<HTMLCanvasElement | null>(null);
 
+  // 1. 背景画像 (/face.png) の描画処理
+  useEffect(() => {
+    const canvas = imageCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const img = new Image();
+    img.src = "/face.png"; // public/face.png を参照
+    img.onload = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+    };
+  }, [imageCanvasRef]);
+
+  // 2. プロフィール情報の描画処理
   useEffect(() => {
     const drawInfo = () => {
       const canvas = infoCanvasRef.current;
@@ -33,25 +49,17 @@ export const CanvasArea: React.FC<Props> = ({
       const birthText = "(1838〜1871)";
       const profileText = "佐藤清救(さとう きよすく)は、明治時代の日本において鉄道網の発展に大きく寄与した技師である。1838年、松前藩の商家に生まれた清救は、幼少期から機械に強い興味を持ち、明治維新後の西洋技術の流入期にその才能を発揮した。政府の奨学金を受けてイギリスに留学した清救はロンドン大学で機械工学を学び、帰国後は内務省土木局に入省し日本初の国産鉄道建設プロジェクトに携わることとなった。彼はその開業を見届ける前に亡くなったが、生前に切望していた「駅舎内の売店設置」は後進らの尽力によって無事達成された。";
 
-      // クリア処理
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-      const fontFace = "bold 18px 'ＭＳ 明朝', serif";
-      const bodyFont = "16px 'ＭＳ 明朝', serif";
-
-      // 1. 生没年の描画
-      ctx.font = fontFace;
+      ctx.font = "bold 18px 'ＭＳ 明朝', serif";
       ctx.fillStyle = "#333";
       ctx.textAlign = "center";
       ctx.fillText(birthText, canvas.width / 2, 40);
 
-      // 2. プロフィールの描画
       const lineHeight = 26;
       const maxWidth = canvas.width - 40;
       let x = 20;
       let y = 80;
-
-      ctx.font = bodyFont;
+      ctx.font = "16px 'ＭＳ 明朝', serif";
       ctx.textAlign = "left";
       ctx.textBaseline = "top";
 
@@ -70,7 +78,6 @@ export const CanvasArea: React.FC<Props> = ({
       ctx.fillText(currentLine, x, y);
     };
 
-    // フォントの読み込みを待ってから実行（描画漏れ防止）
     if (document.fonts) {
       document.fonts.ready.then(drawInfo);
     } else {
@@ -80,9 +87,8 @@ export const CanvasArea: React.FC<Props> = ({
 
   return (
     <div className="main-layout" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-      
-      {/* 操作・表示エリア（500x500） */}
       <div className="canvas-container" style={{ position: 'relative', width: '500px', height: '500px' }}>
+        {/* 背景画像用キャンバス */}
         <canvas
           id="face"
           ref={imageCanvasRef}
@@ -92,6 +98,7 @@ export const CanvasArea: React.FC<Props> = ({
           style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
         />
 
+        {/* カメラ映像（ビデオモード時のみ表示、背景より前面） */}
         <video
           id="video"
           ref={videoRef}
@@ -100,10 +107,12 @@ export const CanvasArea: React.FC<Props> = ({
           className={isVideoMode ? '' : 'hide'}
           style={{ 
             position: 'absolute', top: 0, left: 0, zIndex: 2, 
-            width: '100%', height: '100%', objectFit: 'cover' 
+            width: '100%', height: '100%', objectFit: 'cover',
+            display: isVideoMode ? 'block' : 'none'
           }}
         />
 
+        {/* お絵かき用キャンバス（最前面） */}
         <canvas
           id="rakugaki"
           ref={canvasRef}
@@ -117,13 +126,12 @@ export const CanvasArea: React.FC<Props> = ({
         />
       </div>
 
-      {/* 情報表示エリア（装飾なし） */}
       <div className="info-area">
         <canvas
           ref={infoCanvasRef}
           width={500}
           height={300}
-          style={{ display: 'block' }} // 余計な装飾（border, background）を削除
+          style={{ display: 'block' }}
         />
       </div>
     </div>
