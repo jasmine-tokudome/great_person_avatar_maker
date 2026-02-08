@@ -8,6 +8,7 @@ type Props = {
   onPaintClick: () => void;
   isPaintMode: boolean;
   isVideoMode: boolean;
+  fileInputRef: React.RefObject<HTMLInputElement | null>;
 };
 
 export const ControlBar: React.FC<Props> = ({
@@ -18,9 +19,9 @@ export const ControlBar: React.FC<Props> = ({
   onPaintClick,
   isPaintMode,
   isVideoMode,
+  fileInputRef,
 }) => {
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
+  
   const clickFace = () => {
     fileInputRef.current?.click();
   };
