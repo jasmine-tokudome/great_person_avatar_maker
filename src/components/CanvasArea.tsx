@@ -130,7 +130,7 @@ export const CanvasArea: React.FC<Props> = ({
         <canvas
           ref={infoCanvasRef}
           width={500}
-          height={300}
+          height={400}
           style={{ display: 'block' }}
         />
       </div>
