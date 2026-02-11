@@ -102,3 +102,17 @@ body {
 .hide {
   display: none;
 }
+
+.control-bar {
+  display: flex;       /* 要素を横並びにする */
+  gap: 15px;          /* ボタン同士の間隔を15px空ける（ここで調整可能） */
+  align-items: center; /* 垂直方向の中央揃え */
+  justify-content: center; /* 必要に応じて中央寄せ */
+  margin: 20px 0;     /* 前後の余白 */
+}
+
+/* ボタン自体の見た目も少し整える場合 */
+.control-bar button {
+  padding: 8px 16px;
+  cursor: pointer;
+}
