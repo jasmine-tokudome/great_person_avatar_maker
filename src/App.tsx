@@ -78,16 +78,26 @@ function App() {
   // お絵かきロジック（簡略化）
   const handleDrawLine = (e: React.MouseEvent) => {
     if (!isDrawing || !isPaintMode || !rakugakiRef.current) return;
-    const ctx = rakugakiRef.current.getContext('2d');
+    const canvas = rakugakiRef.current;
+    const ctx = canvas.getContext('2d');
+  
     if (ctx) {
+      // 【重要】キャンバスの画面上の位置を取得
+      const rect = canvas.getBoundingClientRect();
+      // ブラウザ全体の座標(clientX)から、キャンバスの左端(rect.left)を引く
+      const currentX = e.clientX - rect.left;
+      const currentY = e.clientY - rect.top;
+  
       ctx.strokeStyle = penColor;
       ctx.lineWidth = 3;
       ctx.lineCap = 'round';
       ctx.beginPath();
       ctx.moveTo(lastPosition.current.x, lastPosition.current.y);
-      ctx.lineTo(e.nativeEvent.offsetX, e.nativeEvent.offsetY);
+      ctx.lineTo(currentX, currentY);
       ctx.stroke();
-      lastPosition.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
+  
+      // 最後に記録する座標も計算後の値を使う
+      lastPosition.current = { x: currentX, y: currentY };
     }
   };
 
@@ -103,19 +113,26 @@ function App() {
         fileInputRef={fileInputRef}
       />
       <CanvasArea
-        canvasRef={rakugakiRef}
-        imageCanvasRef={faceRef}
-        videoRef={videoRef}
-        isVideoMode={isVideoMode}
-        onFaceClick={handleTriggerFileInput}
-        onDrawStart={(e) => {
-          if(!isPaintMode) return;
-          setIsDrawing(true);
-          lastPosition.current = { x: e.nativeEvent.offsetX, y: e.nativeEvent.offsetY };
-        }}
-        onDrawLine={handleDrawLine}
-        onDrawEnd={() => setIsDrawing(false)}
-      />
+  canvasRef={rakugakiRef}
+  imageCanvasRef={faceRef}
+  videoRef={videoRef}
+  isVideoMode={isVideoMode}
+  onFaceClick={handleTriggerFileInput}
+  onDrawStart={(e) => {
+    if(!isPaintMode || !rakugakiRef.current) return;
+    
+    // キャンバスの正確な位置を取得
+    const rect = rakugakiRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setIsDrawing(true);
+    // 始点を計算後の座標で保存
+    lastPosition.current = { x, y };
+  }}
+  onDrawLine={handleDrawLine} // こちらは前回の修正（clientX方式）を適用済みと想定
+  onDrawEnd={() => setIsDrawing(false)}
+/>
     </div>
   );
 }

@@ -8,10 +8,16 @@ body {
 }
 
 #header {
-  position: fixed;
+  z-index: 1001;
+  /* position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100%; */
+}
+
+#header, .control-bar, #functions, #tools {
+  z-index: 1000 !important; /* rakugakiの999より大きく */
+  position: relative; 
 }
 
 #icons {
@@ -62,8 +68,9 @@ body {
 }
 
 #rakugaki:hover {
-  border-style: dashed;
-  border-color: #00000066;
+  /* border-style: dashed;
+  border-color: #00000066; */
+  border: none;
 }
 
 #footer {

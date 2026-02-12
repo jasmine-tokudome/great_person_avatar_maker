@@ -87,8 +87,8 @@ export const CanvasArea: React.FC<Props> = ({
 
   return (
     <div className="main-layout" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+      {/* 画像表示エリア（ここは500pxを維持） */}
       <div className="canvas-container" style={{ position: 'relative', width: '500px', height: '500px' }}>
-        {/* 背景画像用キャンバス */}
         <canvas
           id="face"
           ref={imageCanvasRef}
@@ -97,43 +97,44 @@ export const CanvasArea: React.FC<Props> = ({
           height={500}
           style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}
         />
-
-        {/* カメラ映像（ビデオモード時のみ表示、背景より前面） */}
         <video
           id="video"
           ref={videoRef}
           autoPlay
           playsInline
           className={isVideoMode ? '' : 'hide'}
-          style={{ 
-            position: 'absolute', top: 0, left: 0, zIndex: 2, 
-            width: '100%', height: '100%', objectFit: 'cover',
-            display: isVideoMode ? 'block' : 'none'
-          }}
-        />
-
-        {/* お絵かき用キャンバス（最前面） */}
-        <canvas
-          id="rakugaki"
-          ref={canvasRef}
-          width={500}
-          height={500}
-          onMouseDown={onDrawStart}
-          onMouseMove={onDrawLine}
-          onMouseUp={onDrawEnd}
-          onMouseLeave={onDrawEnd}
-          style={{ position: 'absolute', top: 0, left: 0, zIndex: 3 }}
+          style={{ position: 'absolute', top: 0, left: 0, zIndex: 2, width: '100%', height: '100%', objectFit: 'cover' }}
         />
       </div>
 
+      {/* プロフィールエリア（ここも維持） */}
       <div className="info-area">
-        <canvas
-          ref={infoCanvasRef}
-          width={500}
-          height={400}
-          style={{ display: 'block' }}
-        />
+        <canvas ref={infoCanvasRef} width={500} height={400} style={{ display: 'block' }} />
       </div>
+
+      {/* 【修正】お絵かき用キャンバス：外に出して画面全体へ */}
+      <canvas
+        id="rakugaki"
+        ref={canvasRef}
+        // 画面の実際のピクセルサイズを割り当てる（重要）
+        width={window.innerWidth}
+        height={window.innerHeight}
+        onMouseDown={onDrawStart}
+        onMouseMove={onDrawLine}
+        onMouseUp={onDrawEnd}
+        onMouseLeave={onDrawEnd}
+        style={{ 
+          position: 'fixed', // 親の500pxに縛られない
+          top: 0, 
+          left: 0, 
+          width: '100vw', 
+          height: '100vh', 
+          zIndex: 999,      // 最前面
+          pointerEvents: 'auto',
+          touchAction: 'none',
+          backgroundColor: 'transparent'
+        }}
+      />
     </div>
   );
 };
