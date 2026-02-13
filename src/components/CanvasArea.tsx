@@ -9,6 +9,7 @@ type Props = {
   onDrawLine: (e: React.MouseEvent) => void;
   onDrawEnd: () => void;
   onFaceClick: () => void;
+  isEraserMode: boolean;
 };
 
 export const CanvasArea: React.FC<Props> = ({
