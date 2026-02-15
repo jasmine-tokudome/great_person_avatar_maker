@@ -9,6 +9,7 @@ function App() {
   const [isPaintMode, setIsPaintMode] = useState(false);
   const [isVideoMode, setIsVideoMode] = useState(false);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [isEraserMode, setIsEraserMode] = useState(false);
   
   const rakugakiRef = useRef<HTMLCanvasElement>(null);
   const faceRef = useRef<HTMLCanvasElement>(null);
@@ -87,10 +88,24 @@ function App() {
       // ブラウザ全体の座標(clientX)から、キャンバスの左端(rect.left)を引く
       const currentX = e.clientX - rect.left;
       const currentY = e.clientY - rect.top;
+
+      // --- 消しゴム機能の分岐処理 ---
+      if (isEraserMode) {
+        // 重なった部分を透明にする
+        ctx.globalCompositeOperation = 'destination-out';
+        ctx.lineWidth = 20; // 消しゴムは太めが見やすい
+      } else {
+        // 通常の描画（上書き）
+        ctx.globalCompositeOperation = 'source-over';
+        ctx.strokeStyle = penColor;
+        ctx.lineWidth = 3;
+      }
+      // ----------------------------
   
       ctx.strokeStyle = penColor;
       ctx.lineWidth = 3;
       ctx.lineCap = 'round';
+      ctx.lineJoin = 'round'; // 角を滑らかにする
       ctx.beginPath();
       ctx.moveTo(lastPosition.current.x, lastPosition.current.y);
       ctx.lineTo(currentX, currentY);
