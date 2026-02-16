@@ -126,14 +126,17 @@ function App() {
         isPaintMode={isPaintMode}
         isVideoMode={isVideoMode}
         fileInputRef={fileInputRef}
+        isEraserMode={isEraserMode} 
+        setIsEraserMode={setIsEraserMode}
       />
       <CanvasArea
-  canvasRef={rakugakiRef}
-  imageCanvasRef={faceRef}
-  videoRef={videoRef}
-  isVideoMode={isVideoMode}
-  onFaceClick={handleTriggerFileInput}
-  onDrawStart={(e) => {
+        canvasRef={rakugakiRef}
+        imageCanvasRef={faceRef}
+        videoRef={videoRef}
+        isVideoMode={isVideoMode}
+        onFaceClick={handleTriggerFileInput}
+        isEraserMode={isEraserMode}
+         onDrawStart={(e) => {
     if(!isPaintMode || !rakugakiRef.current) return;
     
     // キャンバスの正確な位置を取得
