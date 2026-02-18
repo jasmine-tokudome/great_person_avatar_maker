@@ -9,6 +9,8 @@ type Props = {
   isPaintMode: boolean;
   isVideoMode: boolean;
   fileInputRef: React.RefObject<HTMLInputElement | null>;
+  isEraserMode: boolean;
+  setIsEraserMode: (value: boolean) => void;
 };
 
 export const ControlBar: React.FC<Props> = ({
@@ -20,6 +22,8 @@ export const ControlBar: React.FC<Props> = ({
   isPaintMode,
   isVideoMode,
   fileInputRef,
+  isEraserMode,
+  setIsEraserMode,
 }) => {
   
   const clickFace = () => {
@@ -54,6 +58,15 @@ export const ControlBar: React.FC<Props> = ({
         onClick={onPaintClick}
       >
         ペイント
+      </button>
+
+      {/* 消しゴム切り替えボタン */}
+      <button 
+        id="eraser" 
+        className={isEraserMode ? 'on' : ''} 
+        onClick={() => setIsEraserMode(!isEraserMode)}
+      >
+        消しゴム
       </button>
 
       {/* 色選択 */}

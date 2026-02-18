@@ -136,7 +136,7 @@ function App() {
         isVideoMode={isVideoMode}
         onFaceClick={handleTriggerFileInput}
         isEraserMode={isEraserMode}
-         onDrawStart={(e) => {
+        onDrawStart={(e) => {
     if(!isPaintMode || !rakugakiRef.current) return;
     
     // キャンバスの正確な位置を取得
