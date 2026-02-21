@@ -18,6 +18,9 @@ function App() {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  const [isStampMode, setIsStampMode] = useState(false);
+  const [stampIndex, setStampIndex] = useState(1); // 1〜5の番号
+
   // ファイルダイアログを開く関数
   const handleTriggerFileInput = () => {
     fileInputRef.current?.click();
