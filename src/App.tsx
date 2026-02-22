@@ -119,6 +119,17 @@ function App() {
     }
   };
 
+  const handleStampClick = () => {
+    if (!isStampMode) {
+      setIsStampMode(true);
+      setIsPaintMode(true); // スタンプ時はペイントモードも強制ON
+      setIsEraserMode(false); // 消しゴムはOFFにする
+    } else {
+      // 5まで行ったら1に戻るループ
+      setStampIndex((prev) => (prev >= 5 ? 1 : prev + 1));
+    }
+  };
+
   return (
     <div className="App">
       <ControlBar 
