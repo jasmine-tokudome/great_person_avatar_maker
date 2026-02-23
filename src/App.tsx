@@ -142,6 +142,9 @@ function App() {
         fileInputRef={fileInputRef}
         isEraserMode={isEraserMode} 
         setIsEraserMode={setIsEraserMode}
+        isStampMode={isStampMode} 
+        stampIndex={stampIndex} 
+        onStampClick={handleStampClick}
       />
       <CanvasArea
         canvasRef={rakugakiRef}
@@ -150,6 +153,8 @@ function App() {
         isVideoMode={isVideoMode}
         onFaceClick={handleTriggerFileInput}
         isEraserMode={isEraserMode}
+        isStampMode={isStampMode} 
+        stampIndex={stampIndex}
         onDrawStart={(e) => {
     if(!isPaintMode || !rakugakiRef.current) return;
     

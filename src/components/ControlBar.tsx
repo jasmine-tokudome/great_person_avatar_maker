@@ -23,6 +23,9 @@ export const ControlBar: React.FC<Props> = ({
   isVideoMode,
   fileInputRef,
   isEraserMode,
+  isStampMode,
+  stampIndex,
+  onStampClick,
   setIsEraserMode,
 }) => {
   
