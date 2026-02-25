@@ -10,6 +10,8 @@ type Props = {
   onDrawEnd: () => void;
   onFaceClick: () => void;
   isEraserMode: boolean;
+  isStampMode: boolean;
+  stampIndex: number;
 };
 
 export const CanvasArea: React.FC<Props> = ({
@@ -21,6 +23,8 @@ export const CanvasArea: React.FC<Props> = ({
   onDrawLine,
   onDrawEnd,
   onFaceClick,
+  isStampMode, 
+  stampIndex,
 }) => {
   const infoCanvasRef = useRef<HTMLCanvasElement | null>(null);
 

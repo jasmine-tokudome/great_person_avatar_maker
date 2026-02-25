@@ -11,6 +11,9 @@ type Props = {
   fileInputRef: React.RefObject<HTMLInputElement | null>;
   isEraserMode: boolean;
   setIsEraserMode: (value: boolean) => void;
+  isStampMode: boolean;
+  stampIndex: number;
+  onStampClick: () => void;
 };
 
 export const ControlBar: React.FC<Props> = ({
