@@ -66,6 +66,14 @@ export const ControlBar: React.FC<Props> = ({
         ペイント
       </button>
 
+      <button 
+        className={isStampMode ? 'on' : ''} 
+        onClick={onStampClick}
+      >
+        {/* Viteではpublicの参照が速いため動的なラベル変更もスムーズ */}
+        スタンプ {isStampMode ? `(${stampIndex})` : ''}
+      </button>
+
       {/* 消しゴム切り替えボタン */}
       <button 
         id="eraser" 
