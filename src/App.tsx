@@ -156,6 +156,27 @@ function App() {
         isStampMode={isStampMode} 
         stampIndex={stampIndex}
         onDrawStart={(e) => {
+          // 1. スタンプモード時の処理（最優先）
+    if (isStampMode && rakugakiRef.current) {
+      const canvas = rakugakiRef.current;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const img = new Image();
+      img.src = `/stamp${stampIndex}.png`; // Viteのpublic参照
+      img.onload = () => {
+        const size = 60;
+        ctx.globalCompositeOperation = 'source-over'; // スタンプは常に上書き
+        ctx.drawImage(img, x - size / 2, y - size / 2, size, size);
+      };
+      
+      // スタンプを押したら、後の「線を描く処理」をさせないためにここで終了
+      return; 
+    }
     if(!isPaintMode || !rakugakiRef.current) return;
     
     // キャンバスの正確な位置を取得
