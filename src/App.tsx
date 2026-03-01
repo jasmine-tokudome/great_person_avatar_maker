@@ -125,8 +125,9 @@ function App() {
       setIsPaintMode(true); // スタンプ時はペイントモードも強制ON
       setIsEraserMode(false); // 消しゴムはOFFにする
     } else {
+      setStampIndex(1);
       // 5まで行ったら1に戻るループ
-      setStampIndex((prev) => (prev >= 5 ? 1 : prev + 1));
+      // setStampIndex((prev) => (prev >= 5 ? 1 : prev + 1));
     }
   };
 
