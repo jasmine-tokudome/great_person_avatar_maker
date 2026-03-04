@@ -120,14 +120,17 @@ function App() {
   };
 
   const handleStampClick = () => {
-    if (!isStampMode) {
-      setIsStampMode(true);
-      setIsPaintMode(true); // スタンプ時はペイントモードも強制ON
-      setIsEraserMode(false); // 消しゴムはOFFにする
+    // 1. 現在の状態を反転させる (true -> false / false -> true)
+    const nextMode = !isStampMode;
+    setIsStampMode(nextMode);
+  
+    if (nextMode) {
+      // 2. スタンプをONにした時の処理
+      setIsPaintMode(true);   // スタンプ描画のためにペイントモードをON
+      setIsEraserMode(false); // 消しゴムは強制OFF
     } else {
-      setStampIndex(1);
-      // 5まで行ったら1に戻るループ
-      // setStampIndex((prev) => (prev >= 5 ? 1 : prev + 1));
+      // 3. スタンプをOFFにした時の処理
+      setIsPaintMode(false); 
     }
   };
 
